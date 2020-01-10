@@ -1,18 +1,32 @@
+/*
+ * AdapterPatternDemo.java, DesignPattern
+ *
+ * Copyright © 2019-2020 Mickael Gaillard / TACTfactory-School
+ * License    : all rights reserved
+ */
+
 package adapter;
 
+import adapter.external.Mp4Player;
+
 public class AdapterPatternDemo {
-	public static void main(String[] args) {
-		AudioPlayer audioPlayer = new AudioPlayer();
 
-		audioPlayer.play("mp3", "beyond the horizon.mp3");
-		audioPlayer.play("mp4", "alone.mp4");
-		audioPlayer.play("vlc", "far far away.vlc");
-		audioPlayer.play("avi", "mind me.avi");
+    public static void main(String[] args) {
 
-		MediaPlayer player = new MediaAdapter("mp4");
-		player.play("mp4", "test.mp4");
+        // Main target.
+        final MyPlayer audioPlayer = new MyPlayer();
+        audioPlayer.play("mp3", "beyond the horizon.mp3");
+        audioPlayer.play("mp4", "alone.mp4");
+        audioPlayer.play("vlc", "far far away.vlc");
+        audioPlayer.play("avi", "mind me.avi");
 
-		MediaPlayer player1 = new AudioPlayer();
-		player1.play("mp4", "test1.mp4");
-	}
+        // Just for Validate.
+        final Mp4Player playerNative = new Mp4Player();
+        playerNative.playMp4("test.mp4");
+
+        final Mp4PlayerAdapter playerAdapted = new Mp4PlayerAdapter(playerNative);
+        playerAdapted.play("mp4", "test.mp4");
+
+    }
+
 }
