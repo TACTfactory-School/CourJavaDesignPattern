@@ -11,9 +11,21 @@ import adapter.MediaPlayer;
 
 public class OggPlayer implements MediaPlayer {
 
+    private String filename;
+
     @Override
     public void play(String audioType, String fileName) {
         System.out.println("Playing OGG file. Name: " + fileName);
+    }
+
+    @Override
+    public void pause() {
+        System.out.println("Playing MP3 file. Name: " + this.filename);
+    }
+
+    @Override
+    public void stop() {
+        System.out.println("Playing MP3 file. Name: " + this.filename);
     }
 
 }

@@ -9,6 +9,8 @@ package adapter.external;
 
 public class Mp4Player {
 
+    private String filename;
+
     public void playMp4(String fileName) {
         System.out.println("Playing MP4 file. Name: " + fileName);
     }

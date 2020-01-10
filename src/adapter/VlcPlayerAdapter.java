@@ -24,4 +24,14 @@ public class VlcPlayerAdapter implements MediaPlayer {
         this.player.playVlc(fileName);
     }
 
+    @Override
+    public void pause() {
+        //TODO
+    }
+
+    @Override
+    public void stop() {
+        //TODO
+    }
+
 }

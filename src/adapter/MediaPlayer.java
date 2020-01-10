@@ -15,5 +15,7 @@ public interface MediaPlayer {
     public static final String FORMAT_VLC = "vlc";
 
 
-    public void play(String audioType, String fileName);
+    void play(String audioType, String fileName);
+    void pause();
+    void stop();
 }

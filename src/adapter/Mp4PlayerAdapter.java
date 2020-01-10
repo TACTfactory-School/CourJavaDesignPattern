@@ -24,4 +24,14 @@ public class Mp4PlayerAdapter implements MediaPlayer {
         this.player.playMp4(fileName);
     }
 
+    @Override
+    public void pause() {
+        //TODO
+    }
+
+    @Override
+    public void stop() {
+        //TODO
+    }
+
 }
