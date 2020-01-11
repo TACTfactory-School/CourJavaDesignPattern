@@ -11,6 +11,10 @@ import adapter.external.VlcPlayer;
 
 public class VlcPlayerAdapter implements MediaPlayer {
 
+    private boolean isPlayed;
+    private String filename;
+    private int pausePosition;
+
     private final VlcPlayer player;
 
     public VlcPlayerAdapter(final VlcPlayer player) {
@@ -21,17 +25,23 @@ public class VlcPlayerAdapter implements MediaPlayer {
     public void play(String audioType, String fileName) {
         System.out.println("Adapter VLC call internal method...");
 
-        this.player.playVlc(fileName);
+        this.isPlayed = true;
+        this.player.playVlc(fileName, 0);
     }
 
     @Override
     public void pause() {
-        //TODO
+        if (this.isPlayed) {
+            this.pausePosition = this.player.stopVlc();
+        } else {
+            this.player.playVlc(filename, this.pausePosition);
+        }
     }
 
     @Override
     public void stop() {
-        //TODO
+        this.isPlayed = false;
+        this.player.stopVlc();
     }
 
 }

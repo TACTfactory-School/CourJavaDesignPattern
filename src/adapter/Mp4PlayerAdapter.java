@@ -11,6 +11,7 @@ import adapter.external.Mp4Player;
 
 public class Mp4PlayerAdapter implements MediaPlayer {
 
+    private boolean isPlayed;
     private final Mp4Player player;
 
     public Mp4PlayerAdapter(final Mp4Player player) {
@@ -26,12 +27,18 @@ public class Mp4PlayerAdapter implements MediaPlayer {
 
     @Override
     public void pause() {
-        //TODO
+        if (!this.isPlayed) {
+            this.player.play();
+        } else {
+            this.player.pause();
+        }
+
+        this.isPlayed = !this.isPlayed;
     }
 
     @Override
     public void stop() {
-        //TODO
+        this.player.stop();
     }
 
 }
